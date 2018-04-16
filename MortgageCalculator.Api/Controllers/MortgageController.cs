@@ -10,7 +10,7 @@ namespace MortgageCalculator.Api.Controllers
         // GET: api/Mortgage
         public IEnumerable<Dto.Mortgage> Get()
         {
-           var mortgageService = new MortgageService();
+            var mortgageService = new MortgageService();
             return mortgageService.GetAllMortgages();
         }
 
