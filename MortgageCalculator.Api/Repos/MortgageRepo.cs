@@ -4,38 +4,23 @@ using System.Linq;
 using System.Web;
 using MortgageCalculator.Api.Helper;
 using MortgageCalculator.Dto;
+using AutoMapper;
+using MortgageCalculator.Api.Services;
 
 namespace MortgageCalculator.Api.Repos
 {
-    public interface IMortgageRepo
+    public class MortgageRepo : IMortgageService
     {
-        List<Mortgage> GetAllMortgages();
-    }
-
-    public class MortgageRepo : IMortgageRepo
-    {
-        public List<Mortgage> GetAllMortgages()
+        public IEnumerable<Mortgage> GetAllMortgages()
         {
             using (var context = new MortgageData.MortgageDataContext())
             {
-                var mortgages = context.Mortgages.ToList();
-                List<Mortgage> result = new List<Mortgage>();
-                foreach (var mortgage in mortgages)
-                {
-                    result.Add(new Mortgage()
-                    {
-                        Name = mortgage.Name,
-                        EffectiveStartDate = mortgage.EffectiveStartDate,
-                        EffectiveEndDate = mortgage.EffectiveEndDate,
-                        CancellationFee = mortgage.CancellationFee,
-                        EstablishmentFee = mortgage.CancellationFee,
-                        InterestRepayment = (InterestRepayment)Enum.Parse(typeof(InterestRepayment), mortgage.MortgageType.ToString()),
-                        MortgageId = mortgage.MortgageId,
-                        MortgageType = (MortgageType)Enum.Parse(typeof(MortgageType), mortgage.MortgageType.ToString()),
-                        TermsInMonths = mortgage.EffectiveStartDate.GetTotalMonthsFrom(mortgage.EffectiveEndDate) //  mortgage.TermsInMonths
-                    }
-                    );
-                }
+                var mortgages = context.Mortgages.OrderBy(x => x.MortgageType)
+                                                 .ThenBy(x => x.InterestRate)
+                                                 .ToList();
+
+                var result = Mapper.Map<IEnumerable<Mortgage>>(mortgages);
+
                 return result;
             }
         }

@@ -1,0 +1,9 @@
+04-17-2018 06:44:38.685|Initialize  Mortgage Controller|
+04-17-2018 06:45:44.275|Initialize  Mortgage Controller|
+04-17-2018 07:08:29.217|Initialize  Mortgage Controller|
+04-17-2018 07:19:15.772|Initialize  Mortgage Controller|
+04-17-2018 07:56:10.937|Initialize  Mortgage Controller|
+04-17-2018 07:59:13.561|Input string was not in a correct format.|
+04-17-2018 07:59:13.622|Input string was not in a correct format.|
+04-17-2018 08:05:10.374|Input string was not in a correct format.|
+04-17-2018 08:05:10.383|Input string was not in a correct format.|

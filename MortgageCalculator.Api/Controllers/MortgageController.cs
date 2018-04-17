@@ -1,24 +1,60 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using MortgageCalculator.Api.Filters;
 using MortgageCalculator.Api.Services;
+using NLog;
 
 namespace MortgageCalculator.Api.Controllers
 {
+
+    [RoutePrefix("api/mortgage")]
+    [CustomExceptionFilter]
     public class MortgageController : ApiController
     {
-        // GET: api/Mortgage
-        public IEnumerable<Dto.Mortgage> Get()
+        private readonly IMortgageService _repository;
+
+        public MortgageController(IMortgageService repository)
         {
-            var mortgageService = new MortgageService();
-            return mortgageService.GetAllMortgages();
+            _repository = repository;
         }
 
-        // GET: api/Mortgage/5
-        public Dto.Mortgage Get(int id)
+        /// <summary>
+        /// Get list of mortgage
+        /// </summary>
+        /// <returns>Return list of mortgage</returns>
+        /// 
+        [HttpGet]
+        [Route("")]
+        public IHttpActionResult Get()
         {
-            var mortgageService = new MortgageService();
-            return mortgageService.GetAllMortgages().FirstOrDefault(x => x.MortgageId == id);
+            var result = _repository.GetAllMortgages();
+
+            if (result == null)
+            {
+                BadRequest();
+            }
+            return Ok(result);
+        }
+
+        /// <summary>
+        ///  Get mortgage by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Return mortgage </returns>
+        [HttpGet]
+        [Route("{id}")]
+        public IHttpActionResult Get(int id)
+        {
+            var result = _repository.GetAllMortgages().FirstOrDefault(x => x.MortgageId == id);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
     }
 }
