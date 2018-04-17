@@ -16,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="~/img/cba-logo.png"/>
+                <img src="~/img/cba-logo.png" />
                 @Html.ActionLink("Simple Mortgage Calculator", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>
@@ -31,6 +31,15 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/views")    
     @RenderSection("scripts", required: false)
+
+    <script>
+
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+
+    </script>
 </body>
 </html>

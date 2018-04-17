@@ -19,9 +19,7 @@ namespace MortgageCalculator.Api.Repos
                                                  .ThenBy(x => x.InterestRate)
                                                  .ToList();
 
-                var result = Mapper.Map<IEnumerable<Mortgage>>(mortgages);
-
-                return result;
+                return Mapper.Map<IEnumerable<Mortgage>>(mortgages);
             }
         }
     }

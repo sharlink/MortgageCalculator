@@ -21,10 +21,17 @@ namespace MortgageCalculator.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/DataTables/datatables.min.js",
+                      "~/Scripts/moment.min.js",
                       "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/views").Include(
+                     "~/Scripts/Common/common.js",                     
+                     "~/Scripts/Views/mortgage.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Scripts/DataTables/datatables.min.css",
                       "~/Content/site.css"));
         }
     }

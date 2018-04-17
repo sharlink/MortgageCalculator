@@ -1,0 +1,1 @@
+﻿var $baseApiUrl = "http://localhost:49608/api/";

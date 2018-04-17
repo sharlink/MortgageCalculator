@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MortgageCalculator.Api.Filters;
+using MortgageCalculator.Api.Services;
 using System.Linq;
 using System.Web.Http;
-using MortgageCalculator.Api.Filters;
-using MortgageCalculator.Api.Services;
-using NLog;
 
 namespace MortgageCalculator.Api.Controllers
 {
@@ -36,6 +33,8 @@ namespace MortgageCalculator.Api.Controllers
                 BadRequest();
             }
             return Ok(result);
+
+
         }
 
         /// <summary>
