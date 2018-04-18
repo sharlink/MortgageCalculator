@@ -31,31 +31,36 @@
 
                 <div class="form-group row">
                     <label class="col-md-4 control-label" for="textinput">Interest Rate</label>
-                    <div class="col-md-4">
+                    <div class="col-md-4 topcontrol">
                         <span id="interest-rate">10.5</span><span>%</span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="loan-amount">Loan Amount</label>
-                    <div class="col-md-4">
-                        <input id="loan-amount" name="loan-amount" type="text" placeholder="0.00" class="form-control input-md" required="">
+                    <div class="col-md-6">                      
+                        <div id="slider-loan-amount"  class="topcontrol">
+                            <div id="loan-amount" class="ui-slider-handle"></div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="loan-tenure">Loan Tenure(in year)</label>
-                    <div class="col-md-4">
-                        <input id="loan-tenure" name="loan-tenure" type="text" placeholder="" class="form-control input-md" required="">
+                    <div class="col-md-6">                       
+                        <div id="slider-year" class="topcontrol">
+                            <div id="loan-year" class="ui-slider-handle"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-8">
-                        <button id="btn-loan-calculate" class="btn btn-primary">Loan Calculate</button>
+                        <span>Total Repayment</span>
+                        <span id="btn-total-repayment" class="btn btn-primary">Loan Calculate</span>
+                        <span id="emi"></span>
                     </div>
-                </div>
-                
+                </div>               
 
 
                 <legend>Detail</legend>

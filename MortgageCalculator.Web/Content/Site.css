@@ -26,3 +26,27 @@ textarea {
 .navbar-brand {
     float: initial;
 }
+
+#loan-amount {
+    width: 5em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    left: -.6em;
+    text-decoration: none;
+    text-align: center; 
+}
+
+#loan-year {
+    width: 5em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    left: -.6em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.topcontrol{
+    top:10px;
+}

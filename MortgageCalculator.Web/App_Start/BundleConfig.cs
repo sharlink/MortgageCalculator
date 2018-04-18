@@ -9,7 +9,8 @@ namespace MortgageCalculator.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -21,7 +22,7 @@ namespace MortgageCalculator.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/DataTables/datatables.min.js",
+                      "~/Scripts/DataTables/datatables.min.js",                      
                       "~/Scripts/moment.min.js",
                       "~/Scripts/respond.js"));
 
@@ -31,6 +32,7 @@ namespace MortgageCalculator.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/jquery-ui.css",
                       "~/Scripts/DataTables/datatables.min.css",
                       "~/Content/site.css"));
         }

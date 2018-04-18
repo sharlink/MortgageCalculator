@@ -7,3 +7,5 @@
 04-17-2018 07:59:13.622|Input string was not in a correct format.|
 04-17-2018 08:05:10.374|Input string was not in a correct format.|
 04-17-2018 08:05:10.383|Input string was not in a correct format.|
+04-18-2018 12:38:43.430|A task was canceled.|
+04-18-2018 12:38:43.473|A task was canceled.|

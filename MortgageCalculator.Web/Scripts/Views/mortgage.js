@@ -5,7 +5,7 @@ $.ajax({
     type: 'GET',
     dataType: 'json',
     success: function (data) {
-        
+
         var table = $('#table-mortgage').dataTable({
             "bDestroy": true
         }).fnDestroy();
@@ -22,7 +22,7 @@ $.ajax({
                 "scrollX": true,
                 "data": data,
                 columnDefs: [
-                    { width: 800, targets: 0 }                    
+                    { width: 800, targets: 0 }
                 ],
                 fixedColumns: true,
                 "columns": [
@@ -30,7 +30,7 @@ $.ajax({
                     { "data": "mortgageType" },
                     { "data": "interestRepayment" },
                     {
-                        "data": "effectiveStartDate",                       
+                        "data": "effectiveStartDate",
                         "render": function (row) {
                             return moment(row).format('MM/DD/YYYY');
                         }
@@ -40,7 +40,7 @@ $.ajax({
                             return moment(row).format('MM/DD/YYYY');
                         }
                     },
-                    { "data": "interestRate" },                    
+                    { "data": "interestRate" },
                     { "data": "termsInMonths" },
                     { "data": "cancellationFee" },
                     { "data": "establishmentFee" }
@@ -80,7 +80,7 @@ $.ajax({
             );
         }
         $('#option-mortgagetype').prop('selectedIndex', 0);
-       
+
 
     },
     error: function (response) {
@@ -92,21 +92,83 @@ $.ajax({
 });
 
 
+var loanAmount = $("#loan-amount");
+
+$("#slider-loan-amount").slider({
+    range: "max",
+    min: 100000,
+    max: 5000000,
+    value: 1000000,
+    step: 100000,
+    create: function () {
+        loanAmount.text($(this).slider("value"));
+    },
+    slide: function (event, ui) {
+        loanAmount.text(ui.value);
+        LoanCalculation();
+    }
+});
+
+
+var loanyear = $("#loan-year");
+
+$("#slider-year").slider({
+    range: "max",
+    min: 1,
+    max: 35,
+    value: 20,
+    step: 1,
+    create: function () {
+        loanyear.text($(this).slider("value"));
+    },
+    slide: function (event, ui) {
+        loanyear.text(ui.value);
+        LoanCalculation();
+    }
+});
+
 GetInterestRates("0");
 $('#option-mortgagetype').change(function () {
     var selectedMortgageType = $("#option-mortgagetype option:selected").val();
-    GetInterestRates(selectedMortgageType);    
+    GetInterestRates(selectedMortgageType);
 });
+
+
 
 function GetInterestRates(mortgageType) {
     if (mortgageType !== "") {
         switch (mortgageType) {
             case "0":
-                $("#interest-rate").text("5.39");
+                $("#interest-rate").text("8.00");
                 break;
             case "1":
                 $("#interest-rate").text("4.99");
                 break;
         }
+
+        LoanCalculation();
     }
+}
+
+
+
+$("#btn-loan-calculate").click(function () {
+
+  //  LoanCalculation();
+});
+
+function LoanCalculation() {
+    var loanAmount = $("#slider-loan-amount").slider("value");
+    var loanTenure = $("#slider-year").slider("value");
+    var numberOfMonths = loanTenure * 12;
+    var rateOfInterest = $("#interest-rate").text();
+    var monthlyInterestRatio = (rateOfInterest / 100) / 12;
+
+    var top = Math.pow((1 + monthlyInterestRatio), numberOfMonths);
+    var bottom = top - 1;
+    var sp = top / bottom;
+    var emi = ((loanAmount * monthlyInterestRatio) * sp);
+
+    $("#btn-total-repayment").text(emi.toFixed(2));
+    
 }
