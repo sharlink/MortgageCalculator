@@ -104,9 +104,11 @@ $("#slider-loan-amount").slider({
         loanAmount.text($(this).slider("value"));
     },
     slide: function (event, ui) {
-        loanAmount.text(ui.value);
+        loanAmount.text(ui.value);       
+    },
+    stop: function () {
         LoanCalculation();
-    }
+    } 
 });
 
 
@@ -122,9 +124,11 @@ $("#slider-year").slider({
         loanyear.text($(this).slider("value"));
     },
     slide: function (event, ui) {
-        loanyear.text(ui.value);
+        loanyear.text(ui.value);       
+    },
+    stop: function () {       
         LoanCalculation();
-    }
+    } 
 });
 
 GetInterestRates("0");
@@ -168,7 +172,10 @@ function LoanCalculation() {
     var bottom = top - 1;
     var sp = top / bottom;
     var emi = ((loanAmount * monthlyInterestRatio) * sp);
+    var totalRepayment = (numberOfMonths * emi);   
+    var totalInterest = totalRepayment - loanAmount;
 
-    $("#btn-total-repayment").text(emi.toFixed(2));
+    $("#btn-total-interest").text(totalInterest.toFixed(0));
+    $("#btn-total-repayment").text(totalRepayment.toFixed(0));
     
 }
