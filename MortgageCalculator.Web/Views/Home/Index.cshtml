@@ -22,28 +22,58 @@
                 <!-- Form Name -->
                 <legend>Calculator</legend>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="textinput">Borrowed Amount</label>
+                <div class="form-group row">
+                    <label class="control-label col-md-4" for="Mortgage">Mortgage Type</label>
                     <div class="col-md-4">
-                        <input id="textinput" name="textinput" type="text" placeholder="0.00" class="form-control input-md" required="">
-                        <span class="help-block">Enter the amount to borrow</span>
-                    </div>                    
+                        <select id="option-mortgagetype" class="selectpicker form-control show-tick"></select>
+                    </div>
                 </div>
+
+                <div class="form-group row">
+                    <label class="col-md-4 control-label" for="textinput">Interest Rate</label>
+                    <div class="col-md-4">
+                        <span id="interest-rate">10.5</span><span>%</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="loan-amount">Loan Amount</label>
+                    <div class="col-md-4">
+                        <input id="loan-amount" name="loan-amount" type="text" placeholder="0.00" class="form-control input-md" required="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="loan-tenure">Loan Tenure(in year)</label>
+                    <div class="col-md-4">
+                        <input id="loan-tenure" name="loan-tenure" type="text" placeholder="" class="form-control input-md" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-8">
+                        <button id="btn-loan-calculate" class="btn btn-primary">Loan Calculate</button>
+                    </div>
+                </div>
+                
+
+
+                <legend>Detail</legend>
 
                 <div class="row">
                     <div>
                         <table id="table-mortgage" class="table table-striped table-bordered" style="width:100%">
                             <thead>
-                                <tr>                                  
+                                <tr>
                                     <th>Name</th>
                                     <th>Mortgage Type</th>
                                     <th>Interest Repayment</th>
                                     <th>Effective StartDate</th>
                                     <th>Effective EndDate</th>
+                                    <th>Interest Rate</th>
                                     <th>Terms In Months</th>
                                     <th>Cancellation Fee</th>
-                                    <th>Establishment Fee</th>                                    
+                                    <th>Establishment Fee</th>
                                 </tr>
                             </thead>
                         </table>

@@ -4,7 +4,7 @@ using System.Web.Http.Dependencies;
 using Unity;
 using Unity.Exceptions;
 
-namespace Afi.Dp.Retail.Logility.Api
+namespace MortgageCalculator.Api
 {
     public class UnityResolver : IDependencyResolver
     {

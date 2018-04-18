@@ -55,5 +55,23 @@ namespace MortgageCalculator.Api.Controllers
 
             return Ok(result);
         }
+
+        /// <summary>
+        ///  Get mortgage type
+        /// </summary>        
+        /// <returns>Return mortgage type </returns>
+        [HttpGet]
+        [Route("type")]
+        public IHttpActionResult GetMortgageType()
+        {
+            var result = _repository.GetMortgageType();
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
     }
 }

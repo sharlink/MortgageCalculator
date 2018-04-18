@@ -1,10 +1,11 @@
-﻿
+﻿'use strict';
+
 $.ajax({
     url: "http://localhost:49608/api/mortgage",
     type: 'GET',
     dataType: 'json',
     success: function (data) {
-        responsiveHelper_dt_basic = undefined;
+        
         var table = $('#table-mortgage').dataTable({
             "bDestroy": true
         }).fnDestroy();
@@ -20,10 +21,17 @@ $.ajax({
                 processing: true,
                 "scrollX": true,
                 "data": data,
+                columnDefs: [
+                    { width: 800, targets: 0 }                    
+                ],
+                fixedColumns: true,
                 "columns": [
-                    { "data": "name" }, { "data": "mortgageType" },
-                    { "data": "interestRepayment" }, {
-                        "data": "effectiveStartDate", "render": function (row) {
+                    { "data": "name" },
+                    { "data": "mortgageType" },
+                    { "data": "interestRepayment" },
+                    {
+                        "data": "effectiveStartDate",                       
+                        "render": function (row) {
                             return moment(row).format('MM/DD/YYYY');
                         }
                     },
@@ -32,7 +40,10 @@ $.ajax({
                             return moment(row).format('MM/DD/YYYY');
                         }
                     },
-                    { "data": "termsInMonths" }, { "data": "cancellationFee" }, { "data": "establishmentFee" }
+                    { "data": "interestRate" },                    
+                    { "data": "termsInMonths" },
+                    { "data": "cancellationFee" },
+                    { "data": "establishmentFee" }
 
                 ]
 
@@ -51,46 +62,51 @@ $.ajax({
     }
 });
 
+$.ajax({
+    url: $baseApiUrl + 'mortgage/type',
+    type: "GET",
+    dataType: "json",
+    // data: { id: request },
+    contentType: "application/json; charset=utf-8",
+    success: function (data) {
 
-//var table = $("#table-mortgage").dataTable({
-//    "processing": true,
-//    "serverSide": true,
-//    "ajax": {
-//        "url": $baseApiUrl + "mortgage"
-//    },
-//    "columns": [
-//        { "data": "name" }, { "data": "name" }, { "data": "name" },
-//        { "data": "name" }, { "data": "name" }, { "data": "name" },
-//        { "data": "name" }, { "data": "name" }, { "data": "name" },
-//        { "data": "name" }
-//    ],
-//    "language": {
-//        "emptyTable": "There are no customers at present.",
-//        "zeroRecords": "There were no matching customers found."
-//    },
-//    "searching": false,
-//    "ordering": true,
-//    "paging": true
-//});
+        var option_list = data;
+
+        $("#option-mortgagetype").empty();
+        for (var i = 0; i < option_list.length; i++) {
+            $("#option-mortgagetype").append(
+                $("<option></option>").attr(
+                    "value", option_list[i].key).text(option_list[i].value)
+            );
+        }
+        $('#option-mortgagetype').prop('selectedIndex', 0);
+       
+
+    },
+    error: function (response) {
+        alert(response.responseText);
+    },
+    failure: function (response) {
+        alert(response.responseText);
+    }
+});
 
 
+GetInterestRates("0");
+$('#option-mortgagetype').change(function () {
+    var selectedMortgageType = $("#option-mortgagetype option:selected").val();
+    GetInterestRates(selectedMortgageType);    
+});
 
-    //$.ajax({
-    //    type: "GET",
-    //    url: $baseApiUrl + "mortgage",
-    //    contentType: "application/json; charset=utf-8",
-    //    dataType: "json",
-    //    success: function (data) {
-
-    //        console.log(data);
-    //    }, //End of AJAX Success function  
-
-    //    failure: function (data) {
-    //        alert(data.responseText);
-    //    }, //End of AJAX failure function  
-    //    error: function (data) {
-    //        alert(data.responseText);
-    //    } //End of AJAX error function  
-
-    //});  
-
+function GetInterestRates(mortgageType) {
+    if (mortgageType !== "") {
+        switch (mortgageType) {
+            case "0":
+                $("#interest-rate").text("5.39");
+                break;
+            case "1":
+                $("#interest-rate").text("4.99");
+                break;
+        }
+    }
+}

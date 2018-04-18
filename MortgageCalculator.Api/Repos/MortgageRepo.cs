@@ -6,6 +6,7 @@ using MortgageCalculator.Api.Helper;
 using MortgageCalculator.Dto;
 using AutoMapper;
 using MortgageCalculator.Api.Services;
+using MortgageCalculator.Api.Models;
 
 namespace MortgageCalculator.Api.Repos
 {
@@ -21,6 +22,18 @@ namespace MortgageCalculator.Api.Repos
 
                 return Mapper.Map<IEnumerable<Mortgage>>(mortgages);
             }
+        }
+
+        public List<DropdownKeyValue> GetMortgageType()
+        {
+            var result = new List<DropdownKeyValue>();
+            Array mortgage = Enum.GetValues(typeof(MortgageType));
+
+            foreach (var item in mortgage)
+            {
+                result.Add(new DropdownKeyValue { Key = ((int)item).ToString(), Value = item.ToString() });
+            }
+            return result;
         }
     }
 }
