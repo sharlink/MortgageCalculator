@@ -4,9 +4,13 @@ MortgageCalculator
 This document describes how to configure the Mortgage Calculation application and this include following projects.
 
 •	MortgageCalculator.Api
+
 •	MortgageCalculator.Api.UnitTests
+
 •	MortgageCalculator.Dto
+
 •	MortgageCalculator.Web
+
 •	MortgageData
 
 Web application calling api for retrieving data and api base url configured in Scripts/Common/common.js.
