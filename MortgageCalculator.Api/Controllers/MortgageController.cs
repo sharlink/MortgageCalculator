@@ -2,12 +2,14 @@
 using MortgageCalculator.Api.Services;
 using System.Linq;
 using System.Web.Http;
+using WebApi.OutputCache.V2;
 
 namespace MortgageCalculator.Api.Controllers
 {
 
     [RoutePrefix("api/mortgage")]
     [CustomExceptionFilter]
+   
     public class MortgageController : ApiController
     {
         private readonly IMortgageService _repository;
@@ -24,6 +26,7 @@ namespace MortgageCalculator.Api.Controllers
         /// 
         [HttpGet]
         [Route("")]
+        [CacheOutput(ClientTimeSpan = 600, ServerTimeSpan = 600)]
         public IHttpActionResult Get()
         {
             var result = _repository.GetAllMortgages();
@@ -44,6 +47,7 @@ namespace MortgageCalculator.Api.Controllers
         /// <returns>Return mortgage </returns>
         [HttpGet]
         [Route("{id}")]
+        [CacheOutput(ClientTimeSpan = 600, ServerTimeSpan = 600)]
         public IHttpActionResult Get(int id)
         {
             var result = _repository.GetAllMortgages().FirstOrDefault(x => x.MortgageId == id);

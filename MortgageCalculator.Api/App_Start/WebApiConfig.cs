@@ -43,14 +43,11 @@ namespace MortgageCalculator.Api
             );
 
             // Auto Mapper
-
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<MortgageData.Mortgage, Dto.Mortgage>()
                     .ForMember(dest => dest.TermsInMonths, opt => opt.MapFrom(src =>
-                     src.EffectiveStartDate.GetTotalMonthsFrom(src.EffectiveEndDate)));
-                //.ForMember(dest => dest.MortgageType, opt => opt.MapFrom(src =>
-                // (MortgageType)Enum.Parse(typeof(MortgageType), src.MortgageType.ToString())));
+                     src.EffectiveStartDate.GetTotalMonthsFrom(src.EffectiveEndDate)));               
             });
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().FirstOrDefault();
@@ -58,6 +55,7 @@ namespace MortgageCalculator.Api
 
             config.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("acceptFormat", "xml", new MediaTypeHeaderValue("application/xml")));
             config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("acceptFormat", "json", new MediaTypeHeaderValue("application/json")));
+            
         }
     }
 }

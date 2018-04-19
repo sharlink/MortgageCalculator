@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator.Web", "MortgageCalculator.Web\MortgageCalculator.Web.csproj", "{B899BA79-2CDF-4125-8154-517070193A87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator.UnitTests", "MortgageCalculator.UnitTests\MortgageCalculator.UnitTests.csproj", "{59759B85-0BED-49B9-A568-A232D425D010}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator.Api.UnitTests", "MortgageCalculator.UnitTests\MortgageCalculator.Api.UnitTests.csproj", "{59759B85-0BED-49B9-A568-A232D425D010}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator.Api", "MortgageCalculator.Api\MortgageCalculator.Api.csproj", "{DB707F8C-25F5-4347-8E67-457050BF88C3}"
 EndProject
