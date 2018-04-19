@@ -69,5 +69,19 @@ namespace MortgageCalculator.Api.UnitTests
             Assert.AreEqual(1, contentResult.Content.MortgageId);
         }
 
+        [Test]
+        public void MortgageControllerGetMortgageByIdShouldReturnOKWithNotFound()
+        {
+
+            var mockRepository = new Mock<IMortgageService>();
+
+            var controller = new MortgageController(mockRepository.Object);
+
+            IHttpActionResult actionResult = controller.Get(12312112);
+
+            Assert.IsInstanceOf(typeof(NotFoundResult), actionResult);
+
+        }
+
     }
 }
