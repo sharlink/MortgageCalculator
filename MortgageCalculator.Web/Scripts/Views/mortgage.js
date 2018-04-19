@@ -104,11 +104,11 @@ $("#slider-loan-amount").slider({
         loanAmount.text($(this).slider("value"));
     },
     slide: function (event, ui) {
-        loanAmount.text(ui.value);       
+        loanAmount.text(ui.value);
     },
     stop: function () {
         LoanCalculation();
-    } 
+    }
 });
 
 
@@ -124,11 +124,11 @@ $("#slider-year").slider({
         loanyear.text($(this).slider("value"));
     },
     slide: function (event, ui) {
-        loanyear.text(ui.value);       
+        loanyear.text(ui.value);
     },
-    stop: function () {       
+    stop: function () {
         LoanCalculation();
-    } 
+    }
 });
 
 GetInterestRates("0");
@@ -143,10 +143,10 @@ function GetInterestRates(mortgageType) {
     if (mortgageType !== "") {
         switch (mortgageType) {
             case "0":
-                $("#interest-rate").text("8.00");
+                $("#interest-rate").text("8.50");
                 break;
             case "1":
-                $("#interest-rate").text("4.99");
+                $("#interest-rate").text("10.99");
                 break;
         }
 
@@ -158,7 +158,7 @@ function GetInterestRates(mortgageType) {
 
 $("#btn-loan-calculate").click(function () {
 
-  //  LoanCalculation();
+    //  LoanCalculation();
 });
 
 function LoanCalculation() {
@@ -172,10 +172,10 @@ function LoanCalculation() {
     var bottom = top - 1;
     var sp = top / bottom;
     var emi = ((loanAmount * monthlyInterestRatio) * sp);
-    var totalRepayment = (numberOfMonths * emi);   
+    var totalRepayment = (numberOfMonths * emi);
     var totalInterest = totalRepayment - loanAmount;
 
-    $("#btn-total-interest").text(totalInterest.toFixed(0));
-    $("#btn-total-repayment").text(totalRepayment.toFixed(0));
-    
+    $("#btn-total-interest").text($.number(totalInterest.toFixed(0)));
+    $("#btn-total-repayment").text($.number(totalRepayment.toFixed(0)));
+
 }

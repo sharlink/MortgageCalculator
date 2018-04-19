@@ -24,6 +24,7 @@ namespace MortgageCalculator.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/DataTables/datatables.min.js",                      
                       "~/Scripts/moment.min.js",
+                      "~/Scripts/jquery.number.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/views").Include(
@@ -35,6 +36,8 @@ namespace MortgageCalculator.Web
                       "~/Content/jquery-ui.css",
                       "~/Scripts/DataTables/datatables.min.css",
                       "~/Content/site.css"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }
