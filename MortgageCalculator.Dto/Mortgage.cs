@@ -23,6 +23,7 @@ namespace MortgageCalculator.Dto
         Fixed
     }
 
+
     public enum InterestRepayment
     {
         InterestOnly,
