@@ -1,11 +1,12 @@
 ﻿'use strict';
 
+
+
 $.ajax({
-    url: "http://localhost:49608/api/mortgage",
+    url: "http://localhost:52187/api/api/mortgage",
     type: 'GET',
     dataType: 'json',
-    success: function (data) {
-
+    success: function (data) {        
         var table = $('#table-mortgage').dataTable({
             "bDestroy": true
         }).fnDestroy();
