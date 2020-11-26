@@ -3,7 +3,7 @@
 
 
 $.ajax({
-    url: "http://localhost:52187/api/api/mortgage",
+    url: "https://apimortgage.azurewebsites.net/api/mortgage",
     type: 'GET',
     dataType: 'json',
     success: function (data) {        
