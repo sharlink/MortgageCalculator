@@ -1,1 +1,1 @@
-﻿var $baseApiUrl = "http://apimortgage.azurewebsites.net/api/";
+﻿var $baseApiUrl = "https://apimortgage.azurewebsites.net/api/";
