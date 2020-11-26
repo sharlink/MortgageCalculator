@@ -1,1 +1,1 @@
-﻿var $baseApiUrl = "http://localhost:52187/api/api/";
+﻿var $baseApiUrl = "http://apimortgage.azurewebsites.net/api/";
